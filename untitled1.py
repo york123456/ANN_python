@@ -4,6 +4,11 @@ Created on Fri Dec  2 15:15:44 2022
 
 @author: b4100
 """
+
+'''
+單層感知機
+'''
+
 import math
 
 def f(x):
@@ -11,6 +16,7 @@ def f(x):
 
 def df(x):
     return f(x)*(1-f(x))
+
 
 
 #train=[[0,0,0],[0,1,0],[1,0,0],[1,1,1]]  #AND

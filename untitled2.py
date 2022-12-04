@@ -5,6 +5,10 @@ Created on Fri Dec  2 20:50:52 2022
 @author: b4100
 """
 
+'''
+雙層三個感知機
+'''
+
 import math
 
 def f(x):
@@ -27,17 +31,17 @@ def df(x):
 train=[[0,0,1],[0,1,0],[1,0,0],[1,1,1]]  #XOR
 print("XOR")
 
-l=1e-1
+l=1e-2
 
-w24=1
-w34=1
-w02=1
-w03=1
-w13=1
-w12=1
-b2=1
-b3=1
-b4=1
+w24=0.5
+w34=0.1
+w02=0.5
+w03=0.5
+w13=0.1
+w12=0.5
+b2=0.1
+b3=0.5
+b4=0.5
 
 k=0
 while(1):
@@ -70,19 +74,19 @@ while(1):
         
         
         w02=w02-l*y0*df(x2)*w24*df(x4)*(youtput-ytarget)
-        w03=w03-l*y0*df(x3)*w34*df(x3)*(youtput-ytarget)
+        w03=w03-l*y0*df(x3)*w34*df(x4)*(youtput-ytarget)
         
         w12=w12-l*y1*df(x2)*w24*df(x4)*(youtput-ytarget)
-        w13=w02-l*y1*df(x3)*w34*df(x3)*(youtput-ytarget)
+        w13=w02-l*y1*df(x3)*w34*df(x4)*(youtput-ytarget)
         
         b2=b2-l*df(x2)*w24*df(x4)*(youtput-ytarget)
-        b3=b3-l*df(x3)*w34*df(x3)*(youtput-ytarget)
+        b3=b3-l*df(x3)*w34*df(x4)*(youtput-ytarget)
         
         
         E+=0.5*pow((youtput-ytarget),2)
     if E<1e-2:
         break
-    if k>100000:
+    if k>1000000:
         print('\ntime out\n')
         break
     
